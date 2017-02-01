@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:51:09 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/01/31 20:45:18 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/01 13:16:34 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ t_sav	*ft_sav_init(char *title)
 	all->win = mlx_new_window(all->mlx, all->winSizeX, all->winSizeY, title);
 	all->sizeX = -1;
 	all->sizeY = -1;
-	all->i = 0;
-	all->j = 0;
-	all->k = 0;
 	all->lst = NULL;
 	return (all);
 }
