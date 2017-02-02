@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 18:48:32 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/01/31 21:51:14 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/02 20:46:30 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ t_lst			*lst_push_line(t_sav *all, char *line, int y)
 	while (tmp[x - 1] != NULL)
 	{
 		lst = lst_push_back(lst, lst_new(x, y, ft_atoi(tmp[x - 1]),
-				(ft_strchr(line, 'x') != NULL) ?
-				ft_atoi_base(ft_strchr(line, 'x') + 1, 16) : 0x00FFFFFF));
+				(ft_strchr(tmp[x - 1], 'x') != NULL) ?
+				ft_atoi_base(ft_strchr(tmp[x - 1], 'x') + 1, 16) : 0x00FFFFFF));
 		x++;
 	}
-	all->sizeX = (all->sizeX == -1) ? x : -1;
+	if (all->sizeX == -1)
+		all->sizeX = x;
 	return (lst);
 }
