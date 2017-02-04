@@ -6,12 +6,12 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 16:49:01 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/04 15:08:11 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/04 15:48:02 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __FDF_H
-#define __FDF_H
+# define __FDF_H
 
 # include "mlx.h"
 # include "../libft/libft.h"
@@ -30,7 +30,7 @@ typedef struct		s_lst
 	int				z;
 	int				z1;
 	int				rgb;
-	struct s_lst 	*next;	
+	struct s_lst	*next;
 }					t_lst;
 
 typedef	struct		s_sav
