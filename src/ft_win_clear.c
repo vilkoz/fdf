@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_px_put.c                                        :+:      :+:    :+:   */
+/*   ft_win_clear.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/31 20:49:00 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/04 21:28:13 by vrybalko         ###   ########.fr       */
+/*   Created: 2017/02/03 18:32:18 by vrybalko          #+#    #+#             */
+/*   Updated: 2017/02/04 15:15:26 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_px_put(t_sav *all)
+void	ft_win_clear(t_sav *all)
 {
-	/*t_lst	*tmp;
+	int		i;
+	int		j;
 
-	tmp = all->lst;
-	while (tmp)
+	i = -1;
+	j = -1;
+	while (++i < all->win_size_y)
 	{
-		mlx_pixel_put(all->mlx, all->win, tmp->x, tmp->y, tmp->rgb);
-		tmp = tmp->next;
-	}*/
-	ft_connect_px(all);
+		while (++j < all->win_size_x)
+			mlx_pixel_put(all->mlx, all->win, j, i, 0x00000000);
+		j = -1;
+	}
 }
