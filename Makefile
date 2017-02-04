@@ -20,6 +20,8 @@ FLAGS = -Wall -Wextra -Werror -I$(IDIR) -g
 
 FLAGS_MLX = -lmlx -framework OpenGl -framework AppKit
 
+FLAGS_X11 = -lmlx -lXext -lX11 -lm
+
 LIB = libft/libft.a
 
 SRCS = main.c					\
@@ -43,16 +45,25 @@ all: $(NAME)
 makelib:
 	make -C libft/
 
-$(NAME): $(BINS)
+libre:
+	make -C libft/ re
+
+libclean:
+	make -C libft/ clean
+
+libfclean:
+	make -C libft/ fclean
+
+$(NAME): $(BINS) makelib
 	gcc -o $(NAME) $(BINS) $(FLAGS) $(FLAGS_MLX) $(LIB)
 
 %.o: %.c
 	gcc $(FLAGS) -c -o $@ $<
 
-clean:
+clean: libclean
 	/bin/rm -f $(BINS)
 
-fclean: clean
+fclean: libfclean clean
 	/bin/rm -f $(NAME)
 
 re: fclean all
