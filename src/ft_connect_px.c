@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 13:00:58 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/02 20:26:15 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/04 15:11:24 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ static void		connect_vertical(t_sav *all)
 	tmp = all->lst;
 	while (tmp)
 	{
-		if ((vnext = get_n_lst_el(tmp, all->sizeX - 1)) != NULL)
-			drawLine(all, tmp, vnext);
+		if ((vnext = get_n_lst_el(tmp, all->size_x - 1)) != NULL)
+			ft_draw_line(all, tmp, vnext);
 		tmp = tmp->next;
 	}
 }
-/*
+
 static void		connect_diag(t_sav *all)
 {
 	t_lst	*tmp;
@@ -53,16 +53,18 @@ static void		connect_diag(t_sav *all)
 	tmp = all->lst;
 	while (tmp)
 	{
-		if (i == all->sizeX - 1)
+		if (i == all->size_x - 1)
 			i = 0;
 		else
-			if ((vnext = get_n_lst_el(tmp, all->sizeX)) != NULL)
-				drawLine(all, tmp, vnext);
+		{
+			if ((vnext = get_n_lst_el(tmp, all->size_x)) != NULL)
+				ft_draw_line(all, tmp, vnext);
+		}
 		tmp = tmp->next;
 		i++;
 	}
 }
-*/
+
 static void		connect_hor(t_sav *all)
 {
 	t_lst	*tmp;
@@ -72,10 +74,10 @@ static void		connect_hor(t_sav *all)
 	tmp = all->lst;
 	while (tmp->next)
 	{
-		if (i == all->sizeX - 1)
+		if (i == all->size_x - 1)
 			i = 0;
 		else
-			drawLine(all, tmp, tmp->next);
+			ft_draw_line(all, tmp, tmp->next);
 		tmp = tmp->next;
 		i++;
 	}
@@ -84,6 +86,6 @@ static void		connect_hor(t_sav *all)
 void			ft_connect_px(t_sav *all)
 {
 	connect_vertical(all);
-	//connect_diag(all);
+	connect_diag(all);
 	connect_hor(all);
 }

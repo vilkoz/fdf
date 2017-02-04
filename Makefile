@@ -6,7 +6,7 @@
 #    By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/23 14:08:11 by vrybalko          #+#    #+#              #
-#    Updated: 2017/02/02 17:22:23 by vrybalko         ###   ########.fr        #
+#    Updated: 2017/02/03 18:54:17 by vrybalko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,9 @@ SRCS = main.c					\
 	   ft_px_transform.c		\
 	   ft_draw_line.c			\
 	   ft_connect_px.c			\
-	   ft_drawLine.c
+	   ft_px_rot.c				\
+	   ft_win_clear.c			\
+	   ft_choose_angle.c
 
 BINS = $(SRCS:.c=.o)
 

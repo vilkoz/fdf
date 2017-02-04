@@ -5,93 +5,93 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/02 16:09:32 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/02 16:50:31 by vrybalko         ###   ########.fr       */
+/*   Created: 2017/02/03 15:12:58 by vrybalko          #+#    #+#             */
+/*   Updated: 2017/02/04 15:20:15 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static t_lin	*line_init(t_lst *p1, t_lst *p2, int type)
+static t_rgb	*init_rgb(int rgb)
+{
+	t_rgb	*new;
+
+	new = (t_rgb *)malloc(sizeof(t_rgb));
+	new->r = (rgb >> 16);
+	new->g = (rgb >> 8) - (new->r << 8);
+	new->b = rgb - ((rgb >> 8) << 8);
+	return (new);
+}
+
+static int		con_rgb(t_rgb *c)
+{
+	return ((c->r << 16) + (c->g << 8) + c->b);
+}
+
+static t_rgb	*calc_rgb(t_rgb *c1, t_rgb *c2, char op)
+{
+	t_rgb	*res;
+
+	res = init_rgb(0);
+	if (op == '+')
+	{
+		res->r = c1->r + c2->r;
+		res->g = c1->g + c2->g;
+		res->b = c1->b + c2->b;
+	}
+	if (op == '-')
+	{
+		res->r = c1->r - c2->r;
+		res->g = c1->g - c2->g;
+		res->b = c1->b - c2->b;
+	}
+	return (res);
+}
+
+static t_lin	*line_init(t_lst *p1, t_lst *p2)
 {
 	t_lin	*lin;
+	t_rgb	*c;
 
 	lin = (t_lin *)malloc(sizeof(t_lin));
 	lin->dx = abs(p2->x - p1->x);
 	lin->dy = abs(p2->y - p1->y);
-	lin->sx = p2->x >= p1->x ? 1 : -1;
-	lin->sy = p2->y >= p1->y ? 1 : -1;
-	lin->p1 = p1;
-	lin->p2 = p2;
-	if (type == 1)
-	{
-		lin->d = (lin->dy << 1) - lin->dx;
-		lin->d1 = lin->dy << 1;
-		lin->d2 = (lin->dy - lin->dx) << 1;
-	}
-	else
-	{
-		lin->d = (lin->dx << 1) - lin->dy;
-		lin->d1 = lin->dx << 1;
-		lin->d2 = (lin->dx - lin->dy) << 1;
-	}
+	lin->sx = p1->x < p2->x ? 1 : -1;
+	lin->sy = p1->y < p2->y ? 1 : -1;
+	lin->error = lin->dx - lin->dy;
+	c = calc_rgb(init_rgb(p2->rgb), init_rgb(p1->rgb), '-');
+	c->r /= sqrt(lin->dx * lin->dx + lin->dy * lin->dy);
+	c->g /= sqrt(lin->dx * lin->dx + lin->dy * lin->dy);
+	c->b /= sqrt(lin->dx * lin->dx + lin->dy * lin->dy);
+	lin->drgb = c;
 	return (lin);
-}
-
-static void		draw_type1(t_sav *all, t_lin *lin)
-{
-	int x;
-	int	y;
-	int	i;
-
-	x = lin->p1->x + lin->sx;
-	y = lin->p1->y;
-	i = 1;
-	mlx_pixel_put(all->mlx, all->win, lin->p1->x, lin->p1->y, lin->p1->rgb);
-	while (i <= lin->dx)
-	{
-		if (lin->d > 0)
-		{
-			lin->d += lin->d2;
-			y += lin->sy;
-		}
-		else
-			lin->d += lin->d1;
-		mlx_pixel_put(all->mlx, all->win, x, y, lin->p1->rgb);
-		i++;
-		x += lin->sx;
-	}
-}
-
-static void		draw_type2(t_sav *all, t_lin *lin)
-{
-	int x;
-	int	y;
-	int	i;
-
-	y = lin->p1->y + lin->sy;
-	x = lin->p1->x;
-	i = 1;
-	mlx_pixel_put(all->mlx, all->win, lin->p1->x, lin->p1->y, lin->p1->rgb);
-	while (i <= lin->dy)
-	{
-		if (lin->d > 0)
-		{
-			lin->d += lin->d2;
-			x += lin->sx;
-		}
-		else
-			lin->d += lin->d1;
-		mlx_pixel_put(all->mlx, all->win, x, y, lin->p1->rgb);
-		i++;
-		y += lin->sy;
-	}
 }
 
 void			ft_draw_line(t_sav *all, t_lst *p1, t_lst *p2)
 {
-	if (abs(p2->y - p1->y) <= abs(p2->x - p1->x))
-		draw_type1(all, line_init(p1, p2, 1));
-	else
-		draw_type2(all, line_init(p1, p2, 2));
+	t_lin	*lin;
+	int		x1;
+	int		y1;
+	t_rgb	*color;
+
+	x1 = p1->x;
+	y1 = p1->y;
+	lin = line_init(p1, p2);
+	color = init_rgb(p1->rgb);
+	while (x1 != p2->x || y1 != p2->y)
+	{
+		mlx_pixel_put(all->mlx, all->win, x1, y1, con_rgb(color));
+		lin->error2 = lin->error * 2;
+		if (lin->error2 > -lin->dy)
+		{
+			lin->error -= lin->dy;
+			x1 += lin->sx;
+		}
+		if (lin->error2 < lin->dx)
+		{
+			lin->error += lin->dx;
+			y1 += lin->sy;
+		}
+		color = calc_rgb(color, lin->drgb, '+');
+	}
 }
