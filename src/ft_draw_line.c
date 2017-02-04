@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 15:12:58 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/04 15:20:15 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/04 21:28:07 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void			ft_draw_line(t_sav *all, t_lst *p1, t_lst *p2)
 	color = init_rgb(p1->rgb);
 	while (x1 != p2->x || y1 != p2->y)
 	{
-		mlx_pixel_put(all->mlx, all->win, x1, y1, con_rgb(color));
+		ft_img_pixel_put(all, x1, y1, con_rgb(color));
 		lin->error2 = lin->error * 2;
 		if (lin->error2 > -lin->dy)
 		{

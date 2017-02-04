@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:51:09 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/04 15:14:56 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/04 16:41:36 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_sav	*ft_sav_init(int z, char *title)
 	all->win_size_y = 1300;
 	all->win = mlx_new_window(all->mlx, all->win_size_x,
 			all->win_size_y, title);
+	all->img = mlx_new_image(all->mlx, all->win_size_x,
+			all->win_size_y);
 	all->size_x = -1;
 	all->size_y = -1;
 	all->lst = NULL;

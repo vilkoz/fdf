@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 18:44:29 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/04 15:10:13 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/04 21:28:04 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,12 @@ void		ft_choose_angle(int key, void *all)
 	alfa = 0;
 	beta = 0;
 	real_choose(key, &alfa, &beta);
-	ft_win_clear((t_sav *)all);
+	mlx_destroy_image(((t_sav *)all)->mlx, ((t_sav *)all)->img);
+	((t_sav *)all)->img = mlx_new_image(((t_sav *)all)->mlx,
+		((t_sav *)all)->win_size_x, ((t_sav *)all)->win_size_y);
 	ft_px_put(ft_px_rot((t_sav *)all, alfa, beta));
+	mlx_put_image_to_window(((t_sav *)all)->mlx, ((t_sav *)all)->win,
+		((t_sav *)all)->img, 0, 0);
 	ft_putstr("printing..\n");
 	mlx_expose_hook(((t_sav *)all)->win, expose_hook, all);
 }

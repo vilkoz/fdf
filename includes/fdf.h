@@ -6,12 +6,12 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 16:49:01 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/04 15:48:02 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/04 21:28:15 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __FDF_H
-# define __FDF_H
+#define __FDF_H
 
 # include "mlx.h"
 # include "../libft/libft.h"
@@ -30,18 +30,20 @@ typedef struct		s_lst
 	int				z;
 	int				z1;
 	int				rgb;
-	struct s_lst	*next;
+	struct s_lst 	*next;	
 }					t_lst;
 
 typedef	struct		s_sav
 {
 	void			*mlx;
 	void			*win;
+	void			*img;
 	int				win_size_x;
 	int				win_size_y;
 	int				size_x;
 	int				size_y;
 	int				mult_z;
+	int				key;
 	double			alfa;
 	double			beta;
 	double			gama;
@@ -83,5 +85,6 @@ void				ft_draw_line(t_sav *all, t_lst *p1, t_lst *p2);
 t_sav				*ft_px_rot(t_sav *all, double alfa, double beta);
 void				ft_win_clear(t_sav *all);
 void				ft_choose_angle(int	key, void *all);
+void				ft_img_pixel_put(t_sav *all, int x, int y, int rgb);
 
 #endif
