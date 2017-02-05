@@ -92,7 +92,7 @@ typedef struct		s_lin
 	int				d;
 	int				d1;
 	int				d2;
-	t_rgb			*drgb;
+	t_rgb			drgb;
 	int				error;
 	int				error2;
 	t_lst			*p1;

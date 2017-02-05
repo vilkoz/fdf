@@ -12,67 +12,65 @@
 
 #include "fdf.h"
 
-static t_rgb	*init_rgb(int rgb)
+static t_rgb	init_rgb(int rgb)
 {
-	t_rgb	*new;
+	t_rgb	new;
 
-	new = (t_rgb *)malloc(sizeof(t_rgb));
-	new->r = (rgb >> 16);
-	new->g = (rgb >> 8) - (new->r << 8);
-	new->b = rgb - ((rgb >> 8) << 8);
+	new.r = (rgb >> 16);
+	new.g = (rgb >> 8) - (new.r << 8);
+	new.b = rgb - ((rgb >> 8) << 8);
 	return (new);
 }
 
-static int		con_rgb(t_rgb *c)
+static int		con_rgb(t_rgb c)
 {
-	return ((c->r << 16) + (c->g << 8) + c->b);
+	return ((c.r << 16) + (c.g << 8) + c.b);
 }
 
-static t_rgb	*calc_rgb(t_rgb *c1, t_rgb *c2, char op)
+static t_rgb	calc_rgb(t_rgb c1, t_rgb c2, char op)
 {
-	t_rgb	*res;
+	t_rgb	res;
 
 	res = init_rgb(0);
 	if (op == '+')
 	{
-		res->r = c1->r + c2->r;
-		res->g = c1->g + c2->g;
-		res->b = c1->b + c2->b;
+		res.r = c1.r + c2.r;
+		res.g = c1.g + c2.g;
+		res.b = c1.b + c2.b;
 	}
 	if (op == '-')
 	{
-		res->r = c1->r - c2->r;
-		res->g = c1->g - c2->g;
-		res->b = c1->b - c2->b;
+		res.r = c1.r - c2.r;
+		res.g = c1.g - c2.g;
+		res.b = c1.b - c2.b;
 	}
 	return (res);
 }
 
-static t_lin	*line_init(t_lst *p1, t_lst *p2)
+static t_lin	line_init(t_lst *p1, t_lst *p2)
 {
-	t_lin	*lin;
-	t_rgb	*c;
+	t_lin	lin;
+	t_rgb	c;
 
-	lin = (t_lin *)malloc(sizeof(t_lin));
-	lin->dx = abs(p2->x - p1->x);
-	lin->dy = abs(p2->y - p1->y);
-	lin->sx = p1->x < p2->x ? 1 : -1;
-	lin->sy = p1->y < p2->y ? 1 : -1;
-	lin->error = lin->dx - lin->dy;
+	lin.dx = abs(p2->x - p1->x);
+	lin.dy = abs(p2->y - p1->y);
+	lin.sx = p1->x < p2->x ? 1 : -1;
+	lin.sy = p1->y < p2->y ? 1 : -1;
+	lin.error = lin.dx - lin.dy;
 	c = calc_rgb(init_rgb(p2->rgb), init_rgb(p1->rgb), '-');
-	c->r /= sqrt(lin->dx * lin->dx + lin->dy * lin->dy);
-	c->g /= sqrt(lin->dx * lin->dx + lin->dy * lin->dy);
-	c->b /= sqrt(lin->dx * lin->dx + lin->dy * lin->dy);
-	lin->drgb = c;
+	c.r /= sqrt(lin.dx * lin.dx + lin.dy * lin.dy);
+	c.g /= sqrt(lin.dx * lin.dx + lin.dy * lin.dy);
+	c.b /= sqrt(lin.dx * lin.dx + lin.dy * lin.dy);
+	lin.drgb = c;
 	return (lin);
 }
 
 void			ft_draw_line(t_sav *all, t_lst *p1, t_lst *p2)
 {
-	t_lin	*lin;
+	t_lin	lin;
 	int		x1;
 	int		y1;
-	t_rgb	*color;
+	t_rgb	color;
 
 	x1 = p1->x;
 	y1 = p1->y;
@@ -81,17 +79,17 @@ void			ft_draw_line(t_sav *all, t_lst *p1, t_lst *p2)
 	while (x1 != p2->x || y1 != p2->y)
 	{
 		ft_img_pixel_put(all, x1, y1, con_rgb(color));
-		lin->error2 = lin->error * 2;
-		if (lin->error2 > -lin->dy)
+		lin.error2 = lin.error * 2;
+		if (lin.error2 > -lin.dy)
 		{
-			lin->error -= lin->dy;
-			x1 += lin->sx;
+			lin.error -= lin.dy;
+			x1 += lin.sx;
 		}
-		if (lin->error2 < lin->dx)
+		if (lin.error2 < lin.dx)
 		{
-			lin->error += lin->dx;
-			y1 += lin->sy;
+			lin.error += lin.dx;
+			y1 += lin.sy;
 		}
-		color = calc_rgb(color, lin->drgb, '+');
+		color = calc_rgb(color, lin.drgb, '+');
 	}
 }

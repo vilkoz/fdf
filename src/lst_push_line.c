@@ -38,6 +38,16 @@ static void		*ft_puterror(int num)
 	return (NULL);
 }
 
+static void		free_line(char **tmp)
+{
+	int		i;
+
+	i = -1;
+	while (tmp[++i])
+		free(tmp[i]);
+	free(tmp);
+}
+
 t_lst			*lst_push_line(t_sav *all, char *line, int y)
 {
 	char	**tmp;
@@ -55,6 +65,7 @@ t_lst			*lst_push_line(t_sav *all, char *line, int y)
 				ft_atoi_base(ft_strchr(tmp[x - 1], 'x') + 1, 16) : 0x00FFFFFF));
 		x++;
 	}
+	free_line(tmp);
 	if (all->size_x == -1)
 		all->size_x = x;
 	else if (x < all->size_x)
