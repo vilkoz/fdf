@@ -6,6 +6,7 @@ program that draws heightmap using minilibX
 
 [minilibX] (https://github.com/abouvier/minilibx)
 ```
+git clone https://github.com/abouvier/minilibx && cd minilibx
 ./configure
 make DESTDIR=/usr/local/ install
 ```
