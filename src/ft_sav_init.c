@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:51:09 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/04 16:41:36 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/05 20:03:26 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,10 @@ t_sav	*ft_sav_init(int z, char *title)
 	all->alfa = 60 * RAD;
 	all->beta = 40 * RAD;
 	all->gama = -60 * RAD;
+	all->zoom = 1;
+	all->x_shift = 0;
+	all->y_shift = 0;
+	all->rgb_shift = 0;
+	all->txt_shift = 0;
 	return (all);
 }

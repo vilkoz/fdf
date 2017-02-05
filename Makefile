@@ -6,7 +6,7 @@
 #    By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/23 14:08:11 by vrybalko          #+#    #+#              #
-#    Updated: 2017/02/04 21:28:16 by vrybalko         ###   ########.fr        #
+#    Updated: 2017/02/05 17:40:42 by vrybalko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,8 +35,11 @@ SRCS = main.c					\
 	   ft_connect_px.c			\
 	   ft_px_rot.c				\
 	   ft_win_clear.c			\
-	   ft_choose_angle.c		\
-	   ft_img_pixel_put.c
+	   ft_img_pixel_put.c		\
+	   ft_mlx_events.c			\
+	   ft_hooks.c				\
+	   ft_put_info.c
+	   #ft_choose_angle.c		\
 
 BINS = $(SRCS:.c=.o)
 
@@ -44,9 +47,6 @@ all: $(NAME)
 
 makelib:
 	make -C libft/
-
-libre:
-	make -C libft/ re
 
 libclean:
 	make -C libft/ clean
