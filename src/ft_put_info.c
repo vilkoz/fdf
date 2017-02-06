@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/05 17:26:17 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/06 17:28:46 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/06 17:32:28 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ void		ft_put_info(t_sav *all)
 	ft_putstry(all, ft_strjoin("Zoom: ", ft_itoa((int)(all->zoom * 100))));
 	ft_putstry(all, ft_strjoin("Height: ", ft_itoa((all->mult_z))));
 	ft_putstry(all, "Controls:");
-	ft_putstry(all, " arrows - change angle");
-	ft_putstry(all, " WASD   - move");
-	ft_putstry(all, " RGB    - change color");
-	ft_putstry(all, " +-     - zoom");
-	ft_putstry(all, " []     - resize height");
-	ft_putstry(all, " p      - enable iso");
+	ft_putstry(all, " arrows, PUp, PDw - change angle");
+	ft_putstry(all, " WASD             - move");
+	ft_putstry(all, " RGB              - change color");
+	ft_putstry(all, " +-               - zoom");
+	ft_putstry(all, " []               - resize height");
+	ft_putstry(all, " p                - enable iso");
 	all->txt_shift = 0;
 }
