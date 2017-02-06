@@ -8,7 +8,7 @@ program that draws heightmap using minilibX
 ```
 git clone https://github.com/abouvier/minilibx && cd minilibx
 ./configure
-make DESTDIR=/usr/local/ install
+sudo make DESTDIR=/usr/local/ install
 ```
 [libft] (https://github.com/vilkoz/libft)
 ```
