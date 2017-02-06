@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 16:49:01 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/06 13:40:26 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/06 16:28:51 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ typedef	struct		s_key
 	int				z_re_u;
 	int				z_re_d;
 	int				iso;
+	int				cube;
+	int				beta_p;
+	int				beta_m;
 }					t_key;
 
 typedef	struct		s_sav
@@ -122,5 +125,7 @@ int					loop_hook(t_sav *all);
 void				ft_mlx_events(t_sav *all);
 void				ft_put_info(t_sav *all);
 void				make_iso(t_sav *all);
+t_lst				*lst_new(int x, int y, int z, int rgb);
+t_sav				*ft_init_cube(t_sav *all);
 
 #endif

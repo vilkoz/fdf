@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/05 14:25:26 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/06 14:22:41 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/06 17:29:59 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int		key_press(int key, t_key *k)
 	(key == 124) ? k->beta_dec = 1 : (void)k->gopa;
 	(key == 125) ? k->alfa_inc = 1 : (void)k->gopa;
 	(key == 126) ? k->alfa_dec = 1 : (void)k->gopa;
+	(key == 8) ? k->cube = 1 : (void)k->gopa;
+	(key == 116) ? k->beta_p = 1 : (void)k->gopa;
+	(key == 121) ? k->beta_m = 1 : (void)k->gopa;
 	return (0);
 }
 
@@ -60,6 +63,8 @@ int		key_release(int key, t_key *k)
 	(key == 125) ? k->alfa_inc = 0 : (void)k->gopa;
 	(key == 126) ? k->alfa_dec = 0 : (void)k->gopa;
 	(key == 35) ? iso_switch(k) : (void)k->gopa;
+	(key == 116) ? k->beta_p = 0 : (void)k->gopa;
+	(key == 121) ? k->beta_m = 0 : (void)k->gopa;
 	return (0);
 }
 
@@ -83,6 +88,9 @@ void	change_params(t_sav *all)
 	(all->keys.alfa_dec == 1) ? all->alfa -= 3 * RAD : (void)all->keys.gopa;
 	(all->keys.iso == 1 || all->keys.iso == 0) ? make_iso(all) :
 		(void)all->keys.gopa;
+	(all->keys.cube == 1) ? all = ft_init_cube(all) : (void)all->keys.gopa;
+	(all->keys.beta_p == 1) ? all->beta += 1 * RAD : (void)all->keys.gopa;
+	(all->keys.beta_m == 1) ? all->beta -= 1 * RAD : (void)all->keys.gopa;
 }
 
 int		loop_hook(t_sav *all)

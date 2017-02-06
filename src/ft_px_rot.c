@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 15:49:20 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/06 14:24:26 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/06 17:19:17 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,14 @@ void			make_iso(t_sav *all)
 {
 	if (all->keys.iso == 1)
 	{
-		save_angles(all);
-		all->alfa = 60 * RAD;
-		all->beta = 40 * RAD;
-		all->gama = -60 * RAD;
-		all->keys.iso = 1;
+		if (all->alfa != 90 * RAD && all->beta != 70.5 * RAD &&
+				all->gama != -60 * RAD)
+		{
+			save_angles(all);
+			all->alfa = 90 * RAD;
+			all->beta = 70.5 * RAD;
+			all->gama = -60 * RAD;
+		}
 	}
 	if (all->keys.iso == 0)
 	{

@@ -6,13 +6,13 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 18:48:32 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/04 15:15:57 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/06 17:29:32 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static t_lst	*lst_new(int x, int y, int z, int rgb)
+t_lst			*lst_new(int x, int y, int z, int rgb)
 {
 	t_lst	*new;
 

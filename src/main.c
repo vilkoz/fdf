@@ -6,12 +6,11 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 15:24:40 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/05 21:37:56 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/06 12:37:54 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 static int	z_mult(int ac, char **av)
 {
@@ -27,8 +26,6 @@ int			main(int argc, char **argv)
 
 	if (argc < 2)
 	{
-		//ft_putstr("Usage: ./fdf <map file> [z_multiplier]\n");
-		//return (1);
 		if ((all = ft_read_file(10, "maps/LC.fdf")) == NULL)
 			return (1);
 	}

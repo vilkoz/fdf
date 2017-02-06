@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/05 14:10:55 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/06 13:43:47 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/06 17:28:07 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ void	keys_init(t_key *key)
 	key->b_shi = 0;
 	key->z_re_u = 0;
 	key->z_re_d = 0;
-	key->iso = 2;
+	key->iso = 1;
+	key->cube = 0;
+	key->beta_p = 0;
+	key->beta_m = 0;
 }
 
 void	ft_mlx_events(t_sav *all)

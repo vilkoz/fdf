@@ -6,7 +6,7 @@
 #    By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/23 14:08:11 by vrybalko          #+#    #+#              #
-#    Updated: 2017/02/05 21:37:57 by vrybalko         ###   ########.fr        #
+#    Updated: 2017/02/06 15:08:28 by vrybalko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ SRCS = main.c					\
 	   ft_sav_init.c			\
 	   lst_push_back.c			\
 	   lst_push_line.c			\
-	   ft_px_put.c				\
 	   ft_px_transform.c		\
 	   ft_draw_line.c			\
 	   ft_connect_px.c			\
@@ -38,8 +37,8 @@ SRCS = main.c					\
 	   ft_img_pixel_put.c		\
 	   ft_mlx_events.c			\
 	   ft_hooks.c				\
-	   ft_put_info.c
-	   #ft_choose_angle.c		\
+	   ft_put_info.c			\
+	   ft_init_cube.c
 
 BINS = $(SRCS:.c=.o)
 
