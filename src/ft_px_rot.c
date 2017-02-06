@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 15:49:20 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/05 21:37:48 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/06 14:24:26 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,37 +28,38 @@ static void		ft_iso(t_sav *all, int *x, int *y, int *z)
 		* sin(all->beta)) * sin(all->gama) + (y1 * cos(all->alfa)
 		+ z1 * sin(all->alfa)) * cos(all->gama) + (all->win_size_y / 2);
 }
-/*
-static void		ft_persp(t_sav *all, int *x, int *y, int *z)
-{
-	int		x1;
-	int		y1;
-	int		z1;
 
-	x1 = *x - (all->win_size_x / 2) + 1000;
-	y1 = *y - (all->win_size_y / 2) + 0;
-	z1 = -(*z) + 1000;
-	// x = alfa, y = beta, z = gama,
-	int dz = cos(all->alfa) * (cos(all->beta) * z1 + sin(all->beta)
-		* (sin(all->gama) * y1 + cos(all->gama) * x1)) - sin(all->alfa)
-		* (cos(all->gama) * y1 - sin(all->gama) * x1);
-	int dx = cos(all->beta) * (sin(all->gama) * y1 + cos(all->gama) * x1) - z1 * sin(all->beta);
-	int	dy = sin(all->alfa) * (cos(all->beta) * z1 + sin(all->beta)
-		* (sin(all->gama) * y1 + cos(all->gama) * x1)) + cos(all->alfa)
-		* (cos(all->gama) * y1 - sin(all->gama) * x1);
-	int ex = 1000, ey = 1000, ez = 0;
-	if (dz != 0)
+void			save_angles(t_sav *all)
+{
+	all->s_alfa = all->alfa;
+	all->s_beta = all->beta;
+	all->s_gama = all->gama;
+}
+
+void			rest_angles(t_sav *all)
+{
+	all->alfa = all->s_alfa;
+	all->beta = all->s_beta;
+	all->gama = all->s_gama;
+}
+
+void			make_iso(t_sav *all)
+{
+	if (all->keys.iso == 1)
 	{
-		*x = (ez / dz) * dx - ex;
-		*y = (ez / dz) * dy - ey;
+		save_angles(all);
+		all->alfa = 60 * RAD;
+		all->beta = 40 * RAD;
+		all->gama = -60 * RAD;
+		all->keys.iso = 1;
 	}
-	else
+	if (all->keys.iso == 0)
 	{
-		*x = 10000;
-		*y = 10000;
+		rest_angles(all);
+		all->keys.iso = 2;
 	}
 }
-*/
+
 t_sav			*ft_px_rot(t_sav *all)
 {
 	t_lst	*tmp;

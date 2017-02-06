@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/05 17:26:17 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/05 21:37:55 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/06 14:00:35 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,11 @@ void		ft_put_info(t_sav *all)
 	ft_putstr_y(all, " RGB    - change color");
 	ft_putstr_y(all, " +-     - zoom");
 	ft_putstr_y(all, " []     - resize height");
+	ft_putstr_y(all, ft_strjoin("k.iso = ", ft_itoa(all->keys.iso)));
+	ft_putstr_y(all, "Angles:");
+	ft_putstr_y(all, ft_strjoin(ft_strjoin("salpha: ",
+					ft_itoa(return_ang((int)(all->s_alfa / RAD)))),
+				ft_strjoin("    sgamma: ",
+					ft_itoa(return_ang((int)(all->s_gama / RAD))))));
 	all->txt_shift = 0;
 }

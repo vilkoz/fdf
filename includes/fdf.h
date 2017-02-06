@@ -6,12 +6,12 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 16:49:01 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/05 21:37:54 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/06 13:40:26 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __FDF_H
-#define __FDF_H
+# define __FDF_H
 
 # include "mlx.h"
 # include "../libft/libft.h"
@@ -30,7 +30,7 @@ typedef struct		s_lst
 	int				z;
 	int				z1;
 	int				rgb;
-	struct s_lst 	*next;	
+	struct s_lst	*next;
 }					t_lst;
 
 typedef	struct		s_key
@@ -52,6 +52,7 @@ typedef	struct		s_key
 	int				b_shi;
 	int				z_re_u;
 	int				z_re_d;
+	int				iso;
 }					t_key;
 
 typedef	struct		s_sav
@@ -68,6 +69,9 @@ typedef	struct		s_sav
 	double			alfa;
 	double			beta;
 	double			gama;
+	double			s_alfa;
+	double			s_beta;
+	double			s_gama;
 	double			zoom;
 	int				x_shift;
 	int				y_shift;
@@ -117,5 +121,6 @@ int					key_release(int key, t_key *k);
 int					loop_hook(t_sav *all);
 void				ft_mlx_events(t_sav *all);
 void				ft_put_info(t_sav *all);
+void				make_iso(t_sav *all);
 
 #endif

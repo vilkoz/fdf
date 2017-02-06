@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 13:00:58 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/04 21:28:12 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/02/06 14:23:52 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,9 @@ static void		connect_hor(t_sav *all)
 
 void			ft_connect_px(t_sav *all)
 {
-	connect_vertical(all);
-	connect_diag(all);
+	if (all->size_x < 300)
+		connect_vertical(all);
+	if (all->size_y < 150 && all->size_x < 150)
+		connect_diag(all);
 	connect_hor(all);
 }
