@@ -15,6 +15,12 @@ sudo make DESTDIR=/usr/local/ install
 fdf > git clone https://github.com/vilkoz/libft
 ```
 
+## Screenshots
+
+![maps/LC.fdf](http://i.imgur.com/Dk86qRV.png)
+![maps/elem-frac.fdf](http://i.imgur.com/m9Xth3c.png)
+![maps/t2.fdf](http://i.imgur.com/TdXFqje.png)
+
 ## execution
 
 ```
