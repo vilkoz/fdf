@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_px_rot.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vrybalko <vrybalko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 15:49:20 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/06 17:19:17 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/03/18 14:22:36 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ static void		ft_iso(t_sav *all, int *x, int *y, int *z)
 	x1 = *x - (all->win_size_x / 2);
 	y1 = *y - (all->win_size_y / 2);
 	z1 = -(*z);
-	*x = (x1 * cos(all->beta) + (-y1 * sin(all->alfa) + z1 * cos(all->alfa))
-		* sin(all->beta)) * cos(all->gama) + (y1 * cos(all->alfa)
-		+ z1 * sin(all->alfa)) * sin(all->gama) + (all->win_size_x / 2);
-	*y = -(x1 * cos(all->beta) + (-y1 * sin(all->alfa) + z1 * cos(all->alfa))
-		* sin(all->beta)) * sin(all->gama) + (y1 * cos(all->alfa)
-		+ z1 * sin(all->alfa)) * cos(all->gama) + (all->win_size_y / 2);
+	*x = (x1 * all->b.cos + (-y1 * all->a.sin + z1 * all->a.cos)
+		* all->b.sin) * all->g.cos + (y1 * all->a.cos
+		+ z1 * all->a.sin) * all->g.sin + (all->win_size_x / 2);
+	*y = -(x1 * all->b.cos + (-y1 * all->a.sin + z1 * all->a.cos)
+		* all->b.sin) * all->g.sin + (y1 * all->a.cos
+		+ z1 * all->a.sin) * all->g.cos + (all->win_size_y / 2);
 }
 
 void			save_angles(t_sav *all)
@@ -74,6 +74,9 @@ t_sav			*ft_px_rot(t_sav *all)
 	head = tmp;
 	mult_x = (int)round((all->win_size_x / all->size_x) * all->zoom);
 	mult_y = (int)round((all->win_size_y / all->size_y) * all->zoom);
+	all->a = calc_sin_cos(all->alfa);
+	all->b = calc_sin_cos(all->beta);
+	all->g = calc_sin_cos(all->gama);
 	while (tmp)
 	{
 		tmp->x = tmp->x1 * mult_x + all->x_shift;
