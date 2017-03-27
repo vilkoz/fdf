@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 16:49:01 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/06 16:28:51 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/03/27 16:01:00 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,12 @@ typedef	struct		s_key
 	int				beta_m;
 }					t_key;
 
+typedef struct		s_p
+{
+	double			sin;
+	double			cos;
+}					t_p;
+
 typedef	struct		s_sav
 {
 	void			*mlx;
@@ -81,6 +87,9 @@ typedef	struct		s_sav
 	int				rgb_shift;
 	int				txt_shift;
 	t_lst			*lst;
+	t_p				a;
+	t_p				b;
+	t_p				g;
 }					t_sav;
 
 typedef struct		s_rgb
@@ -127,5 +136,6 @@ void				ft_put_info(t_sav *all);
 void				make_iso(t_sav *all);
 t_lst				*lst_new(int x, int y, int z, int rgb);
 t_sav				*ft_init_cube(t_sav *all);
+t_p					calc_sin_cos(double num);
 
 #endif

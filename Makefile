@@ -55,7 +55,7 @@ libfclean:
 	make -C libft/ fclean
 
 $(NAME): $(BINS) makelib
-	gcc -o $(NAME) $(BINS) $(FLAGS) $(FLAGS_MLX) $(LIB)
+	gcc -o $(NAME) $(BINS) $(FLAGS) $(FLAGS_X11) $(LIB)
 
 %.o: %.c
 	gcc $(FLAGS) -c -o $@ $<
