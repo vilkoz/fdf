@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 16:49:01 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/03/27 16:18:18 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/03/27 16:22:41 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,9 +146,9 @@ typedef	struct		s_sav
 
 typedef struct		s_rgb
 {
-	int				r;
-	int				g;
-	int				b;
+	double			r;
+	double			g;
+	double			b;
 }					t_rgb;
 
 typedef struct		s_lin
