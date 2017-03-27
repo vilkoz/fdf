@@ -6,7 +6,7 @@
 #    By: vrybalko <vrybalko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/23 14:08:11 by vrybalko          #+#    #+#              #
-#    Updated: 2017/03/18 14:18:38 by vrybalko         ###   ########.fr        #
+#    Updated: 2017/03/27 16:11:48 by vrybalko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,3 +67,9 @@ fclean: libfclean clean
 	/bin/rm -f $(NAME)
 
 re: fclean all
+
+fast_del:
+	/bin/rm -f $(BINS)
+	/bin/rm -f $(NAME)
+
+fre: fast_del all

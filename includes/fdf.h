@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 16:49:01 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/03/27 16:01:00 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/03/27 16:18:18 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,58 @@
 # define ALFA M_PI_4
 # define BETA M_PI_4
 # define RAD (M_PI / 360)
+
+/*
+** Keys
+*/
+
+# ifdef linux
+#  define XK_LATIN1
+#  define XK_MISCELLANY
+#  define XK_TECHNICAL
+#  include <X11/keysymdef.h>
+#  define K_ESC XK_Escape
+#  define K_W XK_w
+#  define K_S XK_s
+#  define K_A XK_a
+#  define K_D XK_d
+#  define K_R XK_r
+#  define K_G XK_g
+#  define K_B XK_b
+#  define K_P XK_p
+#  define K_LA XK_Left
+#  define K_RA XK_Right
+#  define K_UA XK_Up
+#  define K_DA XK_Down
+#  define K_PGU XK_Page_Up
+#  define K_PGD XK_Page_Down
+#  define K_E XK_e
+#  define K_M XK_m
+#  define K_T XK_t
+#  define K_Q XK_q
+#  define K_SP XK_space
+# else
+#  define K_ESC 53
+#  define K_W 13
+#  define K_S 1
+#  define K_A 0
+#  define K_D 2
+#  define K_R 15
+#  define K_G 5
+#  define K_B 11
+#  define K_P 35
+#  define K_LA 123
+#  define K_RA 124
+#  define K_UA 125
+#  define K_DA 126
+#  define K_PGU 116
+#  define K_PGD 121
+#  define K_E 14
+#  define K_M 46
+#  define K_T 17
+#  define K_Q 12
+#  define K_SP 49
+# endif
 
 typedef struct		s_lst
 {

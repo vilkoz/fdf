@@ -6,7 +6,7 @@
 /*   By: vrybalko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/05 14:25:26 by vrybalko          #+#    #+#             */
-/*   Updated: 2017/02/06 17:29:59 by vrybalko         ###   ########.fr       */
+/*   Updated: 2017/03/27 16:19:34 by vrybalko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,23 @@ int		key_press(int key, t_key *k)
 {
 	(key == 33) ? k->z_re_u = 1 : (void)k->gopa;
 	(key == 30) ? k->z_re_d = 1 : (void)k->gopa;
-	(key == 15) ? k->r_shi = 1 : (void)k->gopa;
-	(key == 5) ? k->g_shi = 1 : (void)k->gopa;
-	(key == 11) ? k->b_shi = 1 : (void)k->gopa;
-	(key == 13) ? k->y_shift_up = 1 : (void)k->gopa;
-	(key == 0) ? k->x_shift_down = 1 : (void)k->gopa;
-	(key == 1) ? k->y_shift_down = 1 : (void)k->gopa;
-	(key == 2) ? k->x_shift_up = 1 : (void)k->gopa;
+	(key == K_R) ? k->r_shi = 1 : (void)k->gopa;
+	(key == K_G) ? k->g_shi = 1 : (void)k->gopa;
+	(key == K_B) ? k->b_shi = 1 : (void)k->gopa;
+	(key == K_W) ? k->y_shift_up = 1 : (void)k->gopa;
+	(key == K_A) ? k->x_shift_down = 1 : (void)k->gopa;
+	(key == K_S) ? k->y_shift_down = 1 : (void)k->gopa;
+	(key == K_D) ? k->x_shift_up = 1 : (void)k->gopa;
 	(key == 24) ? k->zoom_in = 1 : (void)k->gopa;
 	(key == 27) ? k->zoom_out = 1 : (void)k->gopa;
-	(key == 53) ? k->esc = 1 : (void)k->gopa;
-	(key == 123) ? k->beta_inc = 1 : (void)k->gopa;
-	(key == 124) ? k->beta_dec = 1 : (void)k->gopa;
-	(key == 125) ? k->alfa_inc = 1 : (void)k->gopa;
-	(key == 126) ? k->alfa_dec = 1 : (void)k->gopa;
+	(key == K_ESC) ? k->esc = 1 : (void)k->gopa;
+	(key == K_LA) ? k->beta_inc = 1 : (void)k->gopa;
+	(key == K_RA) ? k->beta_dec = 1 : (void)k->gopa;
+	(key == K_UA) ? k->alfa_inc = 1 : (void)k->gopa;
+	(key == K_DA) ? k->alfa_dec = 1 : (void)k->gopa;
 	(key == 8) ? k->cube = 1 : (void)k->gopa;
-	(key == 116) ? k->beta_p = 1 : (void)k->gopa;
-	(key == 121) ? k->beta_m = 1 : (void)k->gopa;
+	(key == K_PGU) ? k->beta_p = 1 : (void)k->gopa;
+	(key == K_PGD) ? k->beta_m = 1 : (void)k->gopa;
 	return (0);
 }
 
@@ -48,23 +48,22 @@ int		key_release(int key, t_key *k)
 {
 	(key == 33) ? k->z_re_u = 0 : (void)k->gopa;
 	(key == 30) ? k->z_re_d = 0 : (void)k->gopa;
-	(key == 15) ? k->r_shi = 0 : (void)k->gopa;
-	(key == 5) ? k->g_shi = 0 : (void)k->gopa;
-	(key == 11) ? k->b_shi = 0 : (void)k->gopa;
-	(key == 13) ? k->y_shift_up = 0 : (void)k->gopa;
-	(key == 0) ? k->x_shift_down = 0 : (void)k->gopa;
-	(key == 1) ? k->y_shift_down = 0 : (void)k->gopa;
-	(key == 2) ? k->x_shift_up = 0 : (void)k->gopa;
+	(key == K_R) ? k->r_shi = 0 : (void)k->gopa;
+	(key == K_G) ? k->g_shi = 0 : (void)k->gopa;
+	(key == K_B) ? k->b_shi = 0 : (void)k->gopa;
+	(key == K_W) ? k->y_shift_up = 0 : (void)k->gopa;
+	(key == K_A) ? k->x_shift_down = 0 : (void)k->gopa;
+	(key == K_S) ? k->y_shift_down = 0 : (void)k->gopa;
+	(key == K_D) ? k->x_shift_up = 0 : (void)k->gopa;
 	(key == 24) ? k->zoom_in = 0 : (void)k->gopa;
 	(key == 27) ? k->zoom_out = 0 : (void)k->gopa;
-	(key == 53) ? k->esc = 0 : (void)k->gopa;
-	(key == 123) ? k->beta_inc = 0 : (void)k->gopa;
-	(key == 124) ? k->beta_dec = 0 : (void)k->gopa;
-	(key == 125) ? k->alfa_inc = 0 : (void)k->gopa;
-	(key == 126) ? k->alfa_dec = 0 : (void)k->gopa;
-	(key == 35) ? iso_switch(k) : (void)k->gopa;
-	(key == 116) ? k->beta_p = 0 : (void)k->gopa;
-	(key == 121) ? k->beta_m = 0 : (void)k->gopa;
+	(key == K_LA) ? k->beta_inc = 0 : (void)k->gopa;
+	(key == K_RA) ? k->beta_dec = 0 : (void)k->gopa;
+	(key == K_UA) ? k->alfa_inc = 0 : (void)k->gopa;
+	(key == K_DA) ? k->alfa_dec = 0 : (void)k->gopa;
+	(key == K_P) ? iso_switch(k) : (void)k->gopa;
+	(key == K_PGU) ? k->beta_p = 0 : (void)k->gopa;
+	(key == K_PGD) ? k->beta_m = 0 : (void)k->gopa;
 	return (0);
 }
 
@@ -89,8 +88,8 @@ void	change_params(t_sav *all)
 	(all->keys.iso == 1 || all->keys.iso == 0) ? make_iso(all) :
 		(void)all->keys.gopa;
 	(all->keys.cube == 1) ? all = ft_init_cube(all) : (void)all->keys.gopa;
-	(all->keys.beta_p == 1) ? all->beta += 1 * RAD : (void)all->keys.gopa;
-	(all->keys.beta_m == 1) ? all->beta -= 1 * RAD : (void)all->keys.gopa;
+	(all->keys.beta_p == 1) ? all->beta += 3 * RAD : (void)all->keys.gopa;
+	(all->keys.beta_m == 1) ? all->beta -= 3 * RAD : (void)all->keys.gopa;
 }
 
 int		loop_hook(t_sav *all)
